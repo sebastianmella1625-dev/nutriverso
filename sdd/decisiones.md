@@ -21,6 +21,10 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-16 | 2026-11-14 | El estado de un sistema lo define su peor indicador | Sebastián | no esconde ningún problema
 - D-17 | 2026-11-14 | Si faltan indicadores: peor estado entre los medidos + marca "incompleto"; "sin datos" solo si falta todo | Sebastián | el astronauta ve lo que sí se sabe
 - D-18 | 2026-11-14 | Vigencia: indicadores diarios 36 h, masa corporal 8 días; pasado eso cuentan como sin dato | Sebastián | evitar falsa tranquilidad con mediciones viejas
+- D-19 | 2026-11-14 | Escenario de la misión: tránsito a Marte, con retardo de 3 a 22 min (12 min por defecto) | Sebastián | es donde el astronauta más depende de autoevaluarse
+- D-20 | 2026-11-14 | Retardo acelerado por defecto (1 min se muestra como 1 s, con etiqueta "demo acelerada") y se puede apagar | Sebastián | la demo dura 30 s
+- D-21 | 2026-11-14 | Misión simulada de 30 días con 2 tripulantes: crew-01 se deshidrata y pierde masa (hueso y músculo en alerta); crew-02 con sueño en declive (mente en vigilar) | Sebastián | gancho nutricional
+- D-22 | 2026-11-14 | Tripulantes simulados con los nombres del equipo: crew-01 "Miguel" y crew-02 "Camila", marcados como simulados | Sebastián | guiño al equipo; confirmar con Miguel y Camila antes de la demo
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
