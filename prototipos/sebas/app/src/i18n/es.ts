@@ -127,6 +127,18 @@ export const es: Record<string, string> = {
   'app.reset_confirm': 'Toca de nuevo para reiniciar',
   'app.data_error': 'No se pudieron cargar los datos: {error}',
 
+  'ground.alert_notify': '{name} avisó a Tierra',
+  'ground.alert_critical': '{name}: {system} está en crítico',
+  'ground.open': 'Abrir',
+  'ground.thread': 'Conversación',
+  'ground.no_messages': 'Aún no hay mensajes',
+  'ground.delivered': 'Entregado',
+  'ground.arrives': 'En tránsito · llega en {s} s',
+  'ground.incoming': 'Llegando desde la nave · en {s} s',
+  'ground.suggested': 'Sugerencia según {system}',
+  'ground.trend_for': '{system} · tendencia de 30 días',
+  'ground.you': 'Tierra',
+
   'delay.iss': 'ISS',
   'delay.moon': 'Luna',
   'delay.mars': 'Tránsito a Marte',

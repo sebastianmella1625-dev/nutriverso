@@ -48,10 +48,17 @@ export function createMockStore(now: () => Date = () => new Date()): Store {
     readings = load<Reading>(K_READINGS) ?? readings
     messages = load<Message>(K_MESSAGES) ?? messages
   }
-  channel?.addEventListener('message', () => {
+  const fromOtherTab = () => {
     refreshFromStorage()
     listeners.forEach((cb) => cb())
-  })
+  }
+  channel?.addEventListener('message', fromOtherTab)
+  // Segunda vía: el evento `storage` llega aunque BroadcastChannel se pierda (pestaña congelada en segundo plano).
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', (e) => {
+      if (e.key === K_READINGS || e.key === K_MESSAGES) fromOtherTab()
+    })
+  }
 
   const changed = () => {
     save(K_READINGS, readings)

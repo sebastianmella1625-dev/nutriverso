@@ -33,7 +33,22 @@ export function useMission() {
 
   useEffect(() => {
     void reload()
-    return store.subscribe(() => void reload())
+    const unsubscribe = store.subscribe(() => void reload())
+    // Una PWA en segundo plano (iOS/Android) o una pestaña oculta puede perder avisos en vivo:
+    // al volver a primer plano, o al recuperar la conexión, se recargan los datos.
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') void reload()
+    }
+    const onAny = () => void reload()
+    document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener('focus', onAny)
+    window.addEventListener('online', onAny)
+    return () => {
+      unsubscribe()
+      document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener('focus', onAny)
+      window.removeEventListener('online', onAny)
+    }
   }, [reload])
 
   return { store, readings, messages, error, loaded, reload }

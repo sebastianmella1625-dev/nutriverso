@@ -127,6 +127,18 @@ export const en: Record<string, string> = {
   'app.reset_confirm': 'Tap again to reset',
   'app.data_error': 'Could not load data: {error}',
 
+  'ground.alert_notify': '{name} notified Ground',
+  'ground.alert_critical': '{name}: {system} is critical',
+  'ground.open': 'Open',
+  'ground.thread': 'Conversation',
+  'ground.no_messages': 'No messages yet',
+  'ground.delivered': 'Delivered',
+  'ground.arrives': 'In transit · arrives in {s} s',
+  'ground.incoming': 'Incoming from crew · arrives in {s} s',
+  'ground.suggested': 'Suggested from {system}',
+  'ground.trend_for': '{system} · 30-day trend',
+  'ground.you': 'Ground',
+
   'delay.iss': 'ISS',
   'delay.moon': 'Moon',
   'delay.mars': 'Mars transit',

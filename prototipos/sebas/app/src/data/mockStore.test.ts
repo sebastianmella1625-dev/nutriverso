@@ -44,6 +44,17 @@ describe('mock store (D-26)', () => {
     off()
   })
 
+  it('notifies subscribers when another tab writes to storage (backup for BroadcastChannel)', async () => {
+    const s = createMockStore(() => NOW)
+    const cb = vi.fn()
+    const off = s.subscribe(cb)
+    window.dispatchEvent(new StorageEvent('storage', { key: 'nv.messages' }))
+    expect(cb).toHaveBeenCalledTimes(1)
+    window.dispatchEvent(new StorageEvent('storage', { key: 'unrelated' }))
+    expect(cb).toHaveBeenCalledTimes(1)
+    off()
+  })
+
   it('reset restores the mission and clears messages (D-29)', async () => {
     const s = createMockStore(() => NOW)
     await s.sendMessage({ crew_id: 'crew-01', from_role: 'ground', body: 'x', deliver_at: null })

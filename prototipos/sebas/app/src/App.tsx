@@ -3,6 +3,7 @@ import { CREW } from './domain/mission'
 import { useMission } from './data/useMission'
 import { I18nProvider, useT } from './i18n'
 import { CrewView } from './ui/crew/CrewView'
+import { GroundView } from './ui/ground/GroundView'
 import { useNow } from './ui/useNow'
 import { routeFromHash, type Route } from './routing'
 
@@ -64,7 +65,7 @@ function Shell() {
         {!loaded ? null : route === 'crew' ? (
           <CrewView profile={profile} readings={readings} messages={messages} store={store} now={now} />
         ) : (
-          <p className="muted center">Ground view — Task 8</p>
+          <GroundView readings={readings} messages={messages} store={store} now={now} />
         )}
       </main>
 

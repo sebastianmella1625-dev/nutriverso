@@ -135,3 +135,49 @@ html, body { overflow-x: clip; }
 .tabbar__count { position: absolute; top: 4px; right: calc(50% - 22px); background: var(--critical); color: #1a0505; font-size: 0.65rem; font-weight: 700; border-radius: 999px; padding: 0 6px; }
 .zone__hit { fill: transparent; stroke: none; }
 .zone .zone__hit { stroke-width: 0; }
+
+/* Consola Ground (D-34) */
+.ground__title { font-size: 1.15rem; margin: var(--space-2) 0 var(--space-3); }
+.ground__grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 820px) { .ground__grid { grid-template-columns: 280px 1fr; align-items: start; } }
+
+.alerts { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-2); }
+.alerts__item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-2) var(--space-3); border-radius: var(--radius); font-weight: 600; }
+.alerts__item--critical { background: color-mix(in srgb, var(--critical) 18%, var(--surface)); border: 1px solid var(--critical); }
+.alerts__item--notify { background: color-mix(in srgb, var(--alert) 16%, var(--surface)); border: 1px solid var(--alert); }
+
+.crewlist h2, .crewdetail h2 { font-size: 1.05rem; margin: 0 0 var(--space-2); }
+.crewlist ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.crewlist__item { width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: var(--space-1) var(--space-2); background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--nodata); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+.crewlist__item.is-selected { background: var(--surface-2); }
+.crewlist__why { grid-column: 1 / -1; font-size: 0.82rem; color: var(--text-muted); }
+.crewlist__item--ok { border-left-color: var(--ok); }
+.crewlist__item--watch { border-left-color: var(--watch); }
+.crewlist__item--alert { border-left-color: var(--alert); }
+.crewlist__item--critical { border-left-color: var(--critical); }
+
+.crewdetail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); }
+.syschips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.syschip { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 0.85rem; min-height: 36px; }
+.syschip.is-selected { border-color: var(--accent); }
+.syschip--ok span[aria-hidden] { color: var(--ok); }
+.syschip--watch span[aria-hidden] { color: var(--watch); }
+.syschip--alert span[aria-hidden] { color: var(--alert); }
+.syschip--critical span[aria-hidden] { color: var(--critical); }
+.syschip--nodata span[aria-hidden] { color: var(--nodata); }
+.serieslegend { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-3); padding: 0; margin: var(--space-2) 0 0; font-size: 0.8rem; color: var(--text-muted); }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+
+.thread { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.bubble { max-width: 85%; padding: var(--space-2) var(--space-3); border-radius: 12px; font-size: 0.92rem; display: grid; gap: 2px; }
+.bubble--crew { background: var(--surface-2); justify-self: start; }
+.bubble--ground { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); justify-self: end; }
+.bubble__who { font-size: 0.72rem; color: var(--text-muted); }
+.bubble__meta { font-size: 0.72rem; color: var(--text-muted); }
+
+.composer textarea { width: 100%; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; resize: vertical; }
+.composer__hint { margin: 0 0 var(--space-2); font-size: 0.85rem; }
+.composer__opts { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin: var(--space-2) 0; font-size: 0.88rem; }
+.composer__opts select { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; font: inherit; }
+.composer__opts input[type='range'] { display: block; width: 160px; }
+.composer__send { display: flex; align-items: center; gap: var(--space-3); }
