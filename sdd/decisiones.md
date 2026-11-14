@@ -28,6 +28,10 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-23 | 2026-11-14 | Las 25 recomendaciones de acción las redacta Claude (EN/ES) y Nutrición las revisa antes del prototipo final | Sebastián | no frenar el avance
 - D-24 | 2026-11-14 | Tono de las recomendaciones: acción concreta + una línea de por qué | Sebastián | educar, como pide el reto
 - D-25 | 2026-11-14 | La app abre siempre en inglés y recuerda la elección de idioma | Sebastián | el jurado exige inglés
+- D-26 | 2026-11-14 | Mock ahora; Supabase se activa solo cuando haya claves en .env.local (el código soporta las dos) | Sebastián | no bloquear el avance
+- D-27 | 2026-11-14 | La misión entra a Supabase con un seed.sql generado (con fechas relativas a now()), que se corre una vez en el SQL Editor | Sebastián | sin duplicados ni carreras
+- D-28 | 2026-11-14 | Sala por enlace: `?room=nombre` usa Supabase, aislado por prefijo en crew_id (`nombre:crew-01`); sin room, la app funciona en modo local | Sebastián | que un jurado no ensucie la demo
+- D-29 | 2026-11-14 | Botón "Reiniciar demo" solo en modo local; las salas se reinician volviendo a correr el seed.sql (sin permiso anónimo de borrar) | Sebastián + ruling de Claude | evitar que cualquiera con el link borre datos
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
