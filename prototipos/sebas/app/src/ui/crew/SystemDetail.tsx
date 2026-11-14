@@ -73,9 +73,9 @@ export function SystemDetail({ system, state, profile, readings, latest, store, 
             {series.length > 1 && (
               <div className="chart" aria-label={`${t(`indicator.${ind}`)} · ${t('crew.detail.trend')}`} role="img">
                 <ResponsiveContainer width="100%" height={90}>
-                  <LineChart data={series} margin={{ top: 6, right: 8, bottom: 0, left: -18 }}>
+                  <LineChart data={series} margin={{ top: 6, right: 8, bottom: 0, left: -4 }}>
                     <XAxis dataKey="day" tick={{ fontSize: 10, fill: 'var(--text-muted)' }} interval="preserveStartEnd" minTickGap={24} />
-                    <YAxis tick={{ fontSize: 10, fill: 'var(--text-muted)' }} domain={['auto', 'auto']} width={40} />
+                    <YAxis tick={{ fontSize: 10, fill: 'var(--text-muted)' }} domain={['auto', 'auto']} width={46} />
                     <Tooltip contentStyle={{ background: 'var(--surface-2)', border: '1px solid var(--border)', color: 'var(--text)' }} />
                     <Line type="monotone" dataKey="value" stroke="var(--accent)" strokeWidth={2} dot={false} isAnimationActive={false} />
                   </LineChart>
