@@ -30,7 +30,7 @@ Hackaton/
 | Constitution y decisiones al día con el método del equipo | ✅ |
 | Brief común, plantilla de entrega y protocolo de debate | ✅ aprobado (rige solo el prototipo Sebas; el correo no se envió) |
 | Proyecto Supabase creado y tablas del contrato aplicadas | ⛔ lo hace Sebas |
-| Fase 1: prototipo Sebas | 🔄 Task 1/9 lista (scaffold PWA). Ledger: `.superpowers/sdd/plan-sebas/progress.md` |
+| Fase 1: prototipo Sebas | 🔄 Tasks 1–8 de 9 listas (dominio, datos, vistas Crew y Ground; 105 tests). Falta la Task 9: verificación final, revisión y ENTREGA.md. Ledger: `.superpowers/sdd/plan-sebas/progress.md` |
 | Fase 1: prototipos Miguel y Camila | 🔄 casi terminados, hechos sin el brief. Sebas les pide el contexto y el código por chat para traerlos aquí |
 | Fase 2: debate R1, R2 y conclusión | ⬜ |
 | Fase 3: prototipo final y deploy en GitHub Pages | ⬜ |
