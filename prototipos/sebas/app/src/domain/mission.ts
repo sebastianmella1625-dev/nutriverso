@@ -38,14 +38,14 @@ const STORY: Record<string, Record<Indicator, Curve>> = {
     protein_g: { from: 98, to: 80, noise: 2, decimals: 0 },
     body_mass_kg: { from: 75, to: 70.4, noise: 0.15, decimals: 1 },
   },
-  // Camila: estable, pero duerme cada vez menos → mente en vigilar.
+  // Camila: estable, pero duerme cada vez menos (≈6,3 h al final) → mente en vigilar (D-21).
   'crew-02': {
     heart_rate: { from: 64, to: 66, noise: 2, decimals: 0 },
     bp_systolic: { from: 108, to: 110, noise: 3, decimals: 0 },
     bp_diastolic: { from: 70, to: 71, noise: 2, decimals: 0 },
     glucose: { from: 84, to: 86, noise: 5, decimals: 0 },
     body_temp: { from: 36.6, to: 36.7, noise: 0.15, decimals: 1 },
-    sleep_hours: { from: 7.6, to: 5.8, noise: 0.15, decimals: 1 },
+    sleep_hours: { from: 7.6, to: 6.3, noise: 0.15, decimals: 1 },
     mood: { from: 4.5, to: 3.4, noise: 0.3, decimals: 0 },
     water_ml: { from: 2300, to: 2200, noise: 80, decimals: -1 },
     energy_kcal: { from: 2250, to: 2200, noise: 40, decimals: -1 },

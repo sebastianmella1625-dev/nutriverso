@@ -36,6 +36,9 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-31 | 2026-11-14 | Navegación móvil con 3 pestañas abajo: Body, Check-in y Messages | Sebastián | se siente como app nativa instalada
 - D-32 | 2026-11-14 | El check-in pide 10 indicadores diarios; la masa corporal solo si la última tiene 7 días o más | Sebastián | coherente con D-18 y más corto
 - D-33 | 2026-11-14 | Gamificación: racha de días con check-in + 3 insignias (primera semana, hidratación en meta 5 días, sueño de 7 h o más 5 días) | Sebastián | responde al punto de gamificación del reto
+- D-34 | 2026-11-14 | Consola Ground en 2 columnas: tripulación ordenada por gravedad + detalle, conversación y envío (en móvil se apila) | Sebastián | aprovecha la pantalla del flight surgeon
+- D-35 | 2026-11-14 | Alertas en Ground: banner destacado (aviso del crew o sistema crítico) que se descarta al abrir al tripulante; sin sonido | Sebastián | visible en la demo y sin permisos del navegador
+- D-36 | 2026-11-14 | Mensaje de Ground precargado con la recomendación del peor sistema, editable | Sebastián | demo rápida; la app guía también a Tierra
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)

@@ -40,9 +40,9 @@ describe('generateMission (D-21)', () => {
     expect(['alert', 'critical']).toContain(sev.bySystem.muscle.status)
     expect(sev.bySystem.heart.status).toBe('ok')
   })
-  it('crew-02 (Camila) ends with mind in watch or worse and heart ok', () => {
+  it('crew-02 (Camila) ends with mind in watch (D-21) and heart ok', () => {
     const sev = crewSeverity(generateMission(42, 30, END), CREW[1], END)
-    expect(['watch', 'alert', 'critical']).toContain(sev.bySystem.mind.status)
+    expect(sev.bySystem.mind.status).toBe('watch')
     expect(sev.bySystem.heart.status).toBe('ok')
     expect(sev.bySystem.bone.status).toBe('ok')
   })
@@ -54,7 +54,7 @@ describe('generateMission (D-21)', () => {
       expect(['alert', 'critical'], `seed ${seed} bone`).toContain(miguel.bone.status)
       expect(['alert', 'critical'], `seed ${seed} muscle`).toContain(miguel.muscle.status)
       expect(miguel.heart.status, `seed ${seed} heart`).toBe('ok')
-      expect(['watch', 'alert', 'critical'], `seed ${seed} mind`).toContain(camila.mind.status)
+      expect(camila.mind.status, `seed ${seed} mind`).toBe('watch')
       expect(camila.heart.status, `seed ${seed} camila heart`).toBe('ok')
     }
   })
