@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { routeFromHash } from './App'
+import { routeFromHash } from './routing'
 
 describe('scaffold', () => {
   it('runs vitest', () => {
