@@ -32,6 +32,10 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-27 | 2026-11-14 | La misión entra a Supabase con un seed.sql generado (con fechas relativas a now()), que se corre una vez en el SQL Editor | Sebastián | sin duplicados ni carreras
 - D-28 | 2026-11-14 | Sala por enlace: `?room=nombre` usa Supabase, aislado por prefijo en crew_id (`nombre:crew-01`); sin room, la app funciona en modo local | Sebastián | que un jurado no ensucie la demo
 - D-29 | 2026-11-14 | Botón "Reiniciar demo" solo en modo local; las salas se reinician volviendo a correr el seed.sql (sin permiso anónimo de borrar) | Sebastián + ruling de Claude | evitar que cualquiera con el link borre datos
+- D-30 | 2026-11-14 | Figura: astronauta con traje y 5 zonas (casco = mente, pecho = corazón, abdomen = inmune, brazos = músculo, piernas = hueso) | Sebastián | se lee al instante como "salud del astronauta"
+- D-31 | 2026-11-14 | Navegación móvil con 3 pestañas abajo: Body, Check-in y Messages | Sebastián | se siente como app nativa instalada
+- D-32 | 2026-11-14 | El check-in pide 10 indicadores diarios; la masa corporal solo si la última tiene 7 días o más | Sebastián | coherente con D-18 y más corto
+- D-33 | 2026-11-14 | Gamificación: racha de días con check-in + 3 insignias (primera semana, hidratación en meta 5 días, sueño de 7 h o más 5 días) | Sebastián | responde al punto de gamificación del reto
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
