@@ -37,7 +37,7 @@ Hackaton/
 | Fase 4: demo y página Project en inglés | ⬜ |
 
 ## Pasos que solo puede hacer Sebas
-1. Configurar git: `git config --global user.name ...` y `user.email` con el correo noreply de GitHub. Sin esto no hay commits.
+1. ~~Configurar git~~ ✅ hecho el 14-11 (nombre + correo noreply global). Primeros commits: bd3d737, 23bae14.
 2. Crear el proyecto en Supabase. Luego, en el SQL Editor, pegar el bloque SQL de `brief-prototipos.md` §3. Poner la URL y la anon key en `prototipos/sebas/.env.local` (la escribe Sebas, no se pega en el chat).
 3. Compartir la URL y la anon key con Miguel y Camila para que sus prototipos usen el mismo proyecto.
 4. Mandarles `brief-prototipos.md` y `PLANTILLA_ENTREGA.md`.
