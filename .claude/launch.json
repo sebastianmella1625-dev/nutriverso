@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "prototipos/sebas/app", "run", "dev", "--", "--port", "5173", "--strictPort"],
       "port": 5173
+    },
+    {
+      "name": "nutriverso-sebas-lan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "prototipos/sebas/app", "run", "preview", "--", "--host", "0.0.0.0", "--port", "4173", "--strictPort"],
+      "port": 4173
     }
   ]
 }

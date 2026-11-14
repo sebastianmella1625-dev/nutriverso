@@ -35,6 +35,22 @@ describe('mock store (D-26)', () => {
     expect((await b.messages()).map((m) => m.body)).toEqual(['hi'])
   })
 
+  it('a stale tab does not overwrite what another tab just saved (lost update)', async () => {
+    const ground = createMockStore(() => NOW)
+    const crew = createMockStore(() => NOW) // misma pestaña "dormida": no procesa avisos antes de escribir
+    await ground.sendMessage({ crew_id: 'crew-01', from_role: 'ground', body: 'from ground', deliver_at: null })
+    await crew.sendMessage({ crew_id: 'crew-01', from_role: 'crew', body: 'from crew', deliver_at: null })
+    expect((await crew.messages()).map((m) => m.body).sort()).toEqual(['from crew', 'from ground'])
+
+    await ground.addReadings([
+      { crew_id: 'crew-01', indicator: 'mood', value: 4, unit: '1-5', measured_at: NOW.toISOString(), source: 'simulated' },
+    ])
+    await crew.addReadings([
+      { crew_id: 'crew-01', indicator: 'mood', value: 5, unit: '1-5', measured_at: NOW.toISOString(), source: 'simulated' },
+    ])
+    expect(await crew.readings()).toHaveLength(662)
+  })
+
   it('notifies subscribers after sendMessage', async () => {
     const s = createMockStore(() => NOW)
     const cb = vi.fn()

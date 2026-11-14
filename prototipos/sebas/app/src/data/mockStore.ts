@@ -76,6 +76,7 @@ export function createMockStore(now: () => Date = () => new Date()): Store {
       return [...readings]
     },
     addReadings: async (rs: NewReading[]) => {
+      refreshFromStorage() // leer lo último guardado por otras pestañas antes de agregar (evita pérdida de datos)
       readings = [...readings, ...rs.map((r) => ({ ...r, id: newId() }))]
       changed()
     },
@@ -84,6 +85,7 @@ export function createMockStore(now: () => Date = () => new Date()): Store {
       return [...messages]
     },
     sendMessage: async (m: NewMessage) => {
+      refreshFromStorage() // ídem: no pisar mensajes de otra pestaña
       messages = [...messages, { ...m, id: newId(), created_at: now().toISOString() }]
       changed()
     },
