@@ -17,6 +17,10 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-12 | 2026-11-14 | Interfaz bilingüe EN/ES, que parte en inglés | equipo | el jurado exige inglés y el equipo trabaja en español
 - D-13 | 2026-11-14 | Dos roles de usuario: **crew** (astronauta, en el móvil) y **ground** (flight surgeon en Tierra) | equipo | tiempo real entre el espacio y Tierra
 - D-14 | 2026-11-14 | Este entorno junta el contexto de los tres prototipos y aloja el final | Sebastián | es el centro de integración
+- D-15 | 2026-11-14 | Mapa de indicadores a sistemas = el del spec (5 sistemas; agua y energía en Hueso) | Sebastián | hilo nutricional más fuerte ante el jurado
+- D-16 | 2026-11-14 | El estado de un sistema lo define su peor indicador | Sebastián | no esconde ningún problema
+- D-17 | 2026-11-14 | Si faltan indicadores: peor estado entre los medidos + marca "incompleto"; "sin datos" solo si falta todo | Sebastián | el astronauta ve lo que sí se sabe
+- D-18 | 2026-11-14 | Vigencia: indicadores diarios 36 h, masa corporal 8 días; pasado eso cuentan como sin dato | Sebastián | evitar falsa tranquilidad con mediciones viejas
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
