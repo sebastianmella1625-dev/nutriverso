@@ -5,6 +5,7 @@ import { crewSeverity, evalContext, freshLatest, SYSTEM_IDS, type SystemId } fro
 import type { CrewProfile, Reading } from '../../domain/types'
 import type { Message, Store } from '../../data'
 import { useT } from '../../i18n'
+import { SpaceWeatherCard } from '../SpaceWeatherCard'
 import { BodyMap } from './BodyMap'
 import { CheckIn } from './CheckIn'
 import { Inbox } from './Inbox'
@@ -51,6 +52,7 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
                 ))}
               </ul>
             </div>
+            <SpaceWeatherCard />
             <BodyMap bySystem={sev.bySystem} levels={levels} selected={selected} onSelect={setSelected} />
             {selected ? (
               <SystemDetail

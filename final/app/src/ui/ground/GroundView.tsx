@@ -4,6 +4,7 @@ import { CREW } from '../../domain/mission'
 import type { Reading } from '../../domain/types'
 import type { Message, Store } from '../../data'
 import { useT } from '../../i18n'
+import { SpaceWeatherCard } from '../SpaceWeatherCard'
 import { CrewDetail } from './CrewDetail'
 import { CrewList } from './CrewList'
 
@@ -50,6 +51,8 @@ export function GroundView({ readings, messages, store, now }: Props) {
           ))}
         </ul>
       )}
+
+      <SpaceWeatherCard />
 
       <div className="ground__grid">
         <CrewList ranks={ranks} selectedId={current?.profile.crew_id ?? null} onSelect={open} />

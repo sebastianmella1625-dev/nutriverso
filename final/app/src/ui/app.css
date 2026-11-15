@@ -200,3 +200,13 @@ html, body { overflow-x: clip; }
 .report-box__sent { color: var(--ok); margin: var(--space-2) 0 0; }
 .bubble, .msg__body { white-space: pre-wrap; overflow-wrap: anywhere; }
 .bubble--crew { font-family: var(--mono); font-size: 0.78rem; }
+
+/* Clima espacial NASA DONKI (F5) */
+.sw { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3); margin: 0 0 var(--space-3); font-size: 0.88rem; }
+.sw--sep { border-color: var(--critical); }
+.sw__title { font-size: 0.9rem; margin: 0 0 var(--space-2); }
+.sw p { margin: var(--space-1) 0; }
+.sw__sep { color: var(--critical); font-weight: 700; }
+.sw__counts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.sw__counts li { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; font-size: 0.8rem; }
+.sw__meta { font-size: 0.75rem; }

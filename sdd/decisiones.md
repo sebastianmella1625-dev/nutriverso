@@ -58,6 +58,8 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-53 | 2026-11-15 | El informe semanal lo envía el astronauta con un botón ("Send weekly report to Ground") por el canal real con retardo | Sebastián | se ve en la demo en vivo
 - D-54 | 2026-11-15 | El informe cubre 7 días fijos | Sebastián | calza con "resumen semanal" de los niveles de acción
 - D-55 | 2026-11-15 | El informe viaja siempre en inglés, aunque la app esté en español | Sebastián | lo leen Tierra (NASA) y el jurado
+- D-56 | 2026-11-15 | Clima espacial con la clave gratis de api.nasa.gov de Sebas (VITE_NASA_API_KEY en .env.local y como variable del repo); mientras no exista, DEMO_KEY. Caché: máximo 1 consulta cada 30 min y siempre el último dato guardado | Sebastián | la WiFi de la sede comparte IP y DEMO_KEY permite solo 30 consultas por hora
+- D-57 | 2026-11-15 | La tarjeta de clima espacial aparece en Crew (pestaña Body) y en Ground; un evento SEP muestra el aviso de refugio en ambos | Sebastián | contexto compartido entre la nave y Tierra
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
