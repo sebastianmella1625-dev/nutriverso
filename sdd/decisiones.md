@@ -61,13 +61,17 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-56 | 2026-11-15 | Clima espacial con la clave gratis de api.nasa.gov de Sebas (VITE_NASA_API_KEY en .env.local y como variable del repo); mientras no exista, DEMO_KEY. Caché: máximo 1 consulta cada 30 min y siempre el último dato guardado | Sebastián | la WiFi de la sede comparte IP y DEMO_KEY permite solo 30 consultas por hora
 - D-57 | 2026-11-15 | La tarjeta de clima espacial aparece en Crew (pestaña Body) y en Ground; un evento SEP muestra el aviso de refugio en ambos | Sebastián | contexto compartido entre la nave y Tierra
 
+- D-58 | 2026-11-15 | El equipo de Nutrición revisó y aceptó los 25 textos de acción y los cortes definidos por el equipo; queda cerrado (cumple D-23) | Equipo | validez clínica antes de entregar
+- D-59 | 2026-11-15 | Demo de la página Project = motion graphics de 30 s con voz en inglés (Edge TTS) y subtítulos, hecho con capturas reales (`entrega/motion/`), subido a YouTube como no listado; las 7 slides de Canva quedan para el pitch (cierra P-07) | Sebastián | se entiende sin sonido y sin contexto
+- D-60 | 2026-11-15 | Repo público solo con lo necesario: se sacan de main el prototipo, el debate, la grabación de pantalla antigua, archivos sin uso de la plantilla Vite y notas internas (quedan en el historial y en el tag `proto-sebas-v1`) | Sebastián | que el jurado vea solo el producto final
+
 ## Pendientes
-- P-01 | Concepto ganador: sale del debate (fase 2)
-- P-02 | Lista final de indicadores y fuentes de umbral (el brief trae una base mínima)
-- P-03 | Nombre del proyecto en inglés
+- ~~P-01 | Concepto ganador: sale del debate (fase 2)~~ → cerrada: la base es el prototipo de Sebas
+- ~~P-02 | Lista final de indicadores y fuentes de umbral (el brief trae una base mínima)~~ → cerrada: umbrales fijados en D-40 a D-52
+- ~~P-03 | Nombre del proyecto en inglés~~ → cerrada: "NutriVerso Crew Health"
 - P-04 | Hora del juzgamiento local (preguntar a la Local Lead)
 - P-05 | Sistema de diseño: tokens propios con criterios WCAG o USWDS (`01_RECURSOS.md` §5). Propuesta del UI Designer: tokens propios con estética de "mission control" oscura, tomando de USWDS solo los criterios de accesibilidad, sin el banner .gov ni marcas
-- P-07 | La entrega global igual exige un video de 30 s o 7 slides en la página Project (aparte del pitch local): definir cuál
+- ~~P-07 | La entrega global igual exige un video de 30 s o 7 slides en la página Project (aparte del pitch local): definir cuál~~ → cerrada por D-59
 - P-08 | Confirmar con Miguel y Camila que aceptan aparecer como tripulantes simulados en la demo
 - P-06 | Horario por fases (propuesta en `harness.md`, por confirmar)
 

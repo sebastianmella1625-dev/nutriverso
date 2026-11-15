@@ -16,9 +16,8 @@ An installable web app (PWA, English/Spanish) that lets astronauts **self-assess
 |---|---|
 | `final/app/` | The final app (Vite + React + TypeScript). See its README to run it. |
 | `final/supabase/` | Database schema and room seed generator for live multi-device mode |
-| `prototipos/sebas/` | Sebastián's prototype (the base of the final app, tag `proto-sebas-v1`) |
-| `sdd/` | Spec-driven development: constitution, decisions log, specs and plans |
-| `debate/` | Comparison of the team's three prototypes |
+| `entrega/` | Submission material: Project page text, 30 s narrated demo video (`video/`) and its Remotion source (`motion/`), app screenshots and the live demo script |
+| `sdd/` | Spec-driven development: constitution, decisions log, specs and plans (the first prototype lives in git tag `proto-sebas-v1`) |
 
 ## Use of AI
-Built with **Claude Code (Anthropic)**. It wrote the code, the tests and the draft health texts. The team set the requirements and made every design and clinical decision (`sdd/decisiones.md`). Details are in `final/app/README.md`.
+Built with **Claude Code (Anthropic)**. It wrote the code, the tests and the draft health texts, which the team's nutrition students reviewed and approved. The team set the requirements and made every design and clinical decision (`sdd/decisiones.md`). Details are in `final/app/README.md`.

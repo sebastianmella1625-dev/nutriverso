@@ -1,0 +1,13 @@
+{
+  "voz": "en-US-AndrewNeural",
+  "velocidad": "+4%",
+  "frases": [
+    { "id": "hook", "texto": "At Mars, help from Earth is up to twenty-two minutes away, so astronauts must judge their own health." },
+    { "id": "body", "texto": "NutriVerso maps five body systems with status lights." },
+    { "id": "nutrition", "texto": "Nutrition drives bone and muscle, against personal NASA targets." },
+    { "id": "action", "texto": "Each status says what to do, with source and evidence." },
+    { "id": "report", "texto": "What can wait goes in the weekly report, sent with the real Mars delay." },
+    { "id": "ground", "texto": "Ground ranks the crew by severity, with live NASA space weather." },
+    { "id": "close", "texto": "NutriVerso Crew Health. It guides, it does not diagnose." }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "nutriverso-motion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "30 s motion-graphics demo of NutriVerso Crew Health (NASA Space Apps 2026), built from real app screenshots",
+  "scripts": {
+    "voice": "python -I voz/generar.py",
+    "dev": "remotion studio src/index.ts",
+    "still": "remotion still src/index.ts NutriVersoMotion out/preview.png --frame=300",
+    "render": "bash tools/render.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.512",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.512"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.8.0"
+  }
+}

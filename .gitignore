@@ -3,17 +3,17 @@ dist/
 .vite/
 *.local
 .env*
+!.env.example
 .DS_Store
 Thumbs.db
-!.env.example
 
-# Material de Miguel y Camila: no se publica sin su OK (D-47)
-prototipos/miguel/*
-!prototipos/miguel/.gitkeep
-prototipos/camila/*
-!prototipos/camila/.gitkeep
-debate/paquete-r1/ENTREGA-miguel.md
-debate/paquete-r1/ENTREGA-camila.md
+# Material de trabajo que no va al repo público: queda en el disco y en el historial (tag proto-sebas-v1).
+# Incluye el material de Miguel y Camila, que no se publica sin su OK (D-47).
+prototipos/
+debate/
+00_CONTEXTO.md
+01_RECURSOS.md
+.claude/
 
-# Grabación cruda del video demo (solo se versiona el mp4 final)
+# Video: solo se versiona el mp4 final de la demo
 entrega/video/*.webm

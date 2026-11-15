@@ -12,12 +12,12 @@ Hackaton/
 │  ├─ decisiones.md          única fuente de verdad
 │  ├─ brief-prototipos.md    lo que se pega a las 3 IAs
 │  └─ harness.md             este archivo
-├─ prototipos/
+├─ prototipos/   (fuera del repo público desde D-60; quedan en disco y en el tag proto-sebas-v1)
 │  ├─ PLANTILLA_ENTREGA.md   ficha que completa cada IA
 │  ├─ sebas/                 prototipo 1 (se construye aquí)
 │  ├─ miguel/                prototipo 2 (llega código + ENTREGA.md)
 │  └─ camila/                prototipo 3 (llega código + ENTREGA.md)
-├─ debate/
+├─ debate/       (fuera del repo público desde D-60; el guion pasó a entrega/GUION_DEMO.md)
 │  ├─ PROTOCOLO.md           rondas R1 y R2 + conclusión
 │  └─ r1-*.md, r2-*.md, CONCLUSION.md   (se generan)
 └─ final/                    prototipo final (fase 3)
@@ -34,7 +34,7 @@ Hackaton/
 | Fase 1: prototipos Miguel y Camila | 🔄 casi terminados, hechos sin el brief. Sebas les pide el contexto y el código por chat para traerlos aquí |
 | Fase 2: debate R1, R2 y conclusión | ⬜ |
 | Fase 3: prototipo final y deploy en GitHub Pages | ✅ F1–F6 publicadas (metas NASA, niveles de acción, informe, DONKI, sala Supabase en vivo); 161 tests; https://sebastianmella1625-dev.github.io/nutriverso/ · ledger `.superpowers/sdd/plan-final/progress.md` |
-| Fase 4: demo y página Project en inglés | 🔄 guion de demo en vivo listo (`debate/GUION_DEMO.md`); falta video 30 s o 7 slides (P-07) y la página Project |
+| Fase 4: demo y página Project en inglés | ✅ guion de demo en vivo (`entrega/GUION_DEMO.md`), motion graphics de 30 s (D-59), 7 slides en Canva para el pitch, texto de la página Project (`entrega/PROJECT_PAGE.md`). Revisión de Nutrición cerrada (D-58). Repo limpio (D-60) |
 
 ## Pasos que solo puede hacer Sebas
 1. ~~Configurar git~~ ✅ hecho el 14-11 (nombre + correo noreply global). Primeros commits: bd3d737, 23bae14.
