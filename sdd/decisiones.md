@@ -39,6 +39,11 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-34 | 2026-11-14 | Consola Ground en 2 columnas: tripulación ordenada por gravedad + detalle, conversación y envío (en móvil se apila) | Sebastián | aprovecha la pantalla del flight surgeon
 - D-35 | 2026-11-14 | Alertas en Ground: banner destacado (aviso del crew o sistema crítico) que se descarta al abrir al tripulante; sin sonido | Sebastián | visible en la demo y sin permisos del navegador
 - D-36 | 2026-11-14 | Mensaje de Ground precargado con la recomendación del peor sistema, editable | Sebastián | demo rápida; la app guía también a Tierra
+- D-37 | 2026-11-14 | ~~La base del prototipo final la decide el debate entre las 3 IAs~~ (reemplazada por D-41) | Sebastián | respetar el método del equipo
+- D-38 | 2026-11-14 | ~~Debate completo: ronda 1 + ronda 2~~ (reemplazada por D-41) | Sebastián | más sólido
+- D-39 | 2026-11-14 | Candidatos a trasplante: rigor clínico de Miguel, clima espacial NASA DONKI, músculo y fases, laboratorio + informe (≈19 h en total; el debate prioriza qué entra según el tiempo) | Sebastián | todos suman a la rúbrica
+- D-40 | 2026-11-14 | Regla de umbrales: si existe un requisito NASA (nutrición, líquidos, peso), manda ese; en signos vitales mandan las guías clínicas (AHA, ADA). Lo valida el equipo de Nutrición | Sebastián | lo más defendible ante el jurado
+- D-41 | 2026-11-14 | Sin debate entre IAs: con los 3 prototipos en el repo, el equipo decide la versión final según las bases del hackathon (rúbrica, requisitos de entrega, plazo). `debate/r1-sebas.md` y `debate/paquete-r1/MATRIZ.md` quedan como insumo | Sebastián | ahorrar tiempo; el material ya está aquí
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)

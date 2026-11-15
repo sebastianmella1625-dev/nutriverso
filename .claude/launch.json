@@ -12,6 +12,18 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "prototipos/sebas/app", "run", "preview", "--", "--host", "0.0.0.0", "--port", "4173", "--strictPort"],
       "port": 4173
+    },
+    {
+      "name": "proto-miguel",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "prototipos/miguel/NutriVerso-prototipo-Miguel/app"],
+      "port": 8765
+    },
+    {
+      "name": "proto-camila",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8766", "--bind", "127.0.0.1", "--directory", "prototipos/camila/NUTRIVERSO_PARA_SEBASTIAN/PROTOTIPO_v18"],
+      "port": 8766
     }
   ]
 }
