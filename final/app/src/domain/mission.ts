@@ -4,8 +4,9 @@ import { INDICATORS, type CrewProfile, type Indicator, type Reading } from './ty
 // Misión simulada de 30 días (D-21). Datos 100 % ficticios. Los nombres son del equipo NutriVerso (D-22).
 
 export const CREW: CrewProfile[] = [
-  { crew_id: 'crew-01', name: 'Miguel', energyGoalKcal: 2800, baselineMassKg: 75 },
-  { crew_id: 'crew-02', name: 'Camila', energyGoalKcal: 2300, baselineMassKg: 62 },
+  // Perfiles ficticios. Miguel: EER ≈ 3029 kcal + 100 kcal de EVA (0,5 h/día); agua ≥ 2500 mL. Camila: EER ≈ 2363 kcal; agua ≥ 2100 mL.
+  { crew_id: 'crew-01', name: 'Miguel', sex: 'm', age: 34, heightM: 1.78, activity: 'high', evaHoursPerDay: 0.5, baselineMassKg: 75 },
+  { crew_id: 'crew-02', name: 'Camila', sex: 'f', age: 31, heightM: 1.65, activity: 'high', evaHoursPerDay: 0, baselineMassKg: 62 },
 ]
 
 /** PRNG determinista con semilla (mulberry32). */
@@ -24,7 +25,7 @@ type Curve = { from: number; to: number; noise: number; decimals: number }
 
 /** Trayectoria de cada indicador: valor del día 1 → valor del último día, ± ruido. */
 const STORY: Record<string, Record<Indicator, Curve>> = {
-  // Miguel: se deshidrata, come algo menos y pierde masa → hueso y músculo en alerta.
+  // Miguel: se deshidrata, come algo menos y pierde masa → hueso y músculo en alerta (contra metas NASA, F2).
   'crew-01': {
     heart_rate: { from: 66, to: 70, noise: 3, decimals: 0 },
     bp_systolic: { from: 112, to: 114, noise: 3, decimals: 0 },
@@ -33,10 +34,10 @@ const STORY: Record<string, Record<Indicator, Curve>> = {
     body_temp: { from: 36.6, to: 36.7, noise: 0.15, decimals: 1 },
     sleep_hours: { from: 7.6, to: 7.3, noise: 0.25, decimals: 1 },
     mood: { from: 4.6, to: 4.2, noise: 0.3, decimals: 0 },
-    water_ml: { from: 2400, to: 1150, noise: 60, decimals: -1 },
-    energy_kcal: { from: 2750, to: 2350, noise: 40, decimals: -1 },
-    protein_g: { from: 98, to: 80, noise: 2, decimals: 0 },
-    body_mass_kg: { from: 75, to: 70.4, noise: 0.15, decimals: 1 },
+    water_ml: { from: 2700, to: 1700, noise: 60, decimals: -1 }, // 108 % → ~68 % de la meta NASA (alerta)
+    energy_kcal: { from: 3150, to: 2520, noise: 40, decimals: -1 }, // ~100 % → ~83 % del requerimiento (vigilar)
+    protein_g: { from: 98, to: 80, noise: 2, decimals: 0 }, // 1,31 → 1,11 g/kg (vigilar)
+    body_mass_kg: { from: 75, to: 72.2, noise: 0.15, decimals: 1 }, // −3,7 % (alerta, NASA 3,3 %)
   },
   // Camila: estable, pero duerme cada vez menos (≈6,3 h al final) → mente en vigilar (D-21).
   'crew-02': {

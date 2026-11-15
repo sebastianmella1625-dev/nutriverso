@@ -181,3 +181,4 @@ html, body { overflow-x: clip; }
 .composer__opts select { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; font: inherit; }
 .composer__opts input[type='range'] { display: block; width: 160px; }
 .composer__send { display: flex; align-items: center; gap: var(--space-3); }
+.indicator__target { font-size: 0.8rem; color: var(--text); margin: var(--space-1) 0 0; font-family: var(--mono); }

@@ -1,3 +1,4 @@
+import { fluidTarget } from './nasa'
 import { INDICATORS, type CrewProfile, type Indicator, type Reading } from './types'
 
 // Gamificación (D-33) y check-in semanal de masa (D-32).
@@ -51,7 +52,7 @@ export function badges(readings: Reading[], profile: CrewProfile, now: Date): Ba
   const id = profile.crew_id
   return {
     first_week: streak(readings, id, now) >= 7,
-    hydration_5: lastNDaysMeet(readings, id, 'water_ml', now, 5, 2000),
+    hydration_5: lastNDaysMeet(readings, id, 'water_ml', now, 5, fluidTarget(profile, profile.baselineMassKg)), // meta NASA (D-48)
     sleep_5: lastNDaysMeet(readings, id, 'sleep_hours', now, 5, 7),
   }
 }

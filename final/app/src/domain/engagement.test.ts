@@ -35,10 +35,10 @@ describe('badges (D-33)', () => {
     expect(badges(six, CREW[0], NOW).first_week).toBe(false)
     expect(badges([...six, r('mood', 4, 6)], CREW[0], NOW).first_week).toBe(true)
   })
-  it('hydration needs ≥2000 mL on each of the last 5 days', () => {
-    const ok5 = [0, 1, 2, 3, 4].map((d) => r('water_ml', 2100, d))
+  it('hydration needs the NASA fluid target (2500 mL for Miguel) on each of the last 5 days', () => {
+    const ok5 = [0, 1, 2, 3, 4].map((d) => r('water_ml', 2500, d))
     expect(badges(ok5, CREW[0], NOW).hydration_5).toBe(true)
-    expect(badges([...ok5.slice(1), r('water_ml', 1900, 0)], CREW[0], NOW).hydration_5).toBe(false)
+    expect(badges([...ok5.slice(1), r('water_ml', 2400, 0)], CREW[0], NOW).hydration_5).toBe(false)
   })
   it('sleep needs ≥7 h on each of the last 5 days', () => {
     const ok5 = [0, 1, 2, 3, 4].map((d) => r('sleep_hours', 7.2, d))

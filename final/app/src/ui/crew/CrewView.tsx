@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { badges, streak } from '../../domain/engagement'
-import { crewSeverity, freshLatest, type SystemId } from '../../domain/systems'
+import { crewSeverity, evalContext, freshLatest, type SystemId } from '../../domain/systems'
 import type { CrewProfile, Reading } from '../../domain/types'
 import type { Message, Store } from '../../data'
 import { useT } from '../../i18n'
@@ -26,6 +26,7 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
 
   const sev = crewSeverity(readings, profile, now)
   const latest = freshLatest(readings, profile.crew_id, now)
+  const ctx = evalContext(readings, profile, now)
   const days = streak(readings, profile.crew_id, now)
   const earned = badges(readings, profile, now)
   const unread = messages.filter((m) => m.crew_id === profile.crew_id && m.from_role === 'ground').length
@@ -55,6 +56,7 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
                 profile={profile}
                 readings={readings}
                 latest={latest}
+                ctx={ctx}
                 store={store}
                 now={now}
               />

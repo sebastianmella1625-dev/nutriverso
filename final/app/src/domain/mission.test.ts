@@ -11,8 +11,8 @@ describe('CREW (D-22)', () => {
       ['crew-01', 'Miguel'],
       ['crew-02', 'Camila'],
     ])
-    expect(CREW[0]).toMatchObject({ energyGoalKcal: 2800, baselineMassKg: 75 })
-    expect(CREW[1]).toMatchObject({ energyGoalKcal: 2300, baselineMassKg: 62 })
+    expect(CREW[0]).toMatchObject({ sex: 'm', age: 34, heightM: 1.78, evaHoursPerDay: 0.5, baselineMassKg: 75 })
+    expect(CREW[1]).toMatchObject({ sex: 'f', age: 31, heightM: 1.65, evaHoursPerDay: 0, baselineMassKg: 62 })
   })
 })
 

@@ -50,6 +50,10 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-45 | 2026-11-14 | Juzgamiento local: pitch de máximo 3 min + demo en vivo en tiempo real; el software debe funcionar al 100 % | Sebastián | formato de la sede
 - D-46 | 2026-11-14 | Demo en vivo: astronauta en el celular + Tierra en el computador vía Supabase; respaldo: un computador con dos ventanas en modo local (sin internet) | Sebastián | se ve real y no depende solo de la WiFi
 - D-47 | 2026-11-15 | Repo público `nutriverso` en GitHub (sebastianmella1625-dev) con Pages vía Actions; se publican final/, el prototipo de Sebas, sdd/ y debate/; el material de Miguel y Camila queda fuera (gitignore y fuera del historial) | Sebastián | sin su OK no se publica su trabajo
+- D-48 | 2026-11-15 | Agua vs meta NASA (máx(32 mL/kg; 2500 H / 2100 M)): ≥100 % ok, 80–99 % vigilar, 60–79 % alerta, <60 % crítico (cortes del equipo) | Sebastián | aviso temprano con la lectura del día
+- D-49 | 2026-11-15 | Pérdida de masa vs basal: <2 % ok, 2–3,2 % vigilar, 3,3–4,9 % alerta, ≥5 % crítico (NASA Food & Nutrition Risk Rev D) | Sebastián | NASA primero (D-40) + aviso temprano
+- D-50 | 2026-11-15 | Energía: promedio de 3 días ÷ (EER IOM/NASA JSC-67378 + 200 kcal × h de EVA): ≥90 % ok, 80–89 vigilar, 70–79 alerta, <70 crítico | Sebastián | un día malo no dispara la alarma
+- D-51 | 2026-11-15 | Horas de EVA promedio por día en el perfil del tripulante (no cambia el contrato de datos) | Sebastián | sin tocar Supabase
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)

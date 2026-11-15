@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest'
 import { classify, parseValue, SOURCES, UNITS, validateReading } from './thresholds'
 import { INDICATORS, type CrewProfile } from './types'
 
-const profile: CrewProfile = { crew_id: 'crew-01', name: 'Test', energyGoalKcal: 2800, baselineMassKg: 75 }
+// Hombre 40 a, 1,78 m, actividad alta, sin EVA: EER = 2972,0 kcal; meta de agua = 2500 mL (piso masculino).
+const profile: CrewProfile = {
+  crew_id: 'crew-01', name: 'Test', sex: 'm', age: 40, heightM: 1.78, activity: 'high', evaHoursPerDay: 0, baselineMassKg: 75,
+}
 const c = (ind: Parameters<typeof classify>[0], v: number) => classify(ind, v, profile)
 
 describe('classify: borders from spec-sebas.md', () => {
@@ -71,36 +74,44 @@ describe('classify: borders from spec-sebas.md', () => {
     expect(c('mood', 1)).toBe('critical')
   })
 
-  it('water_ml', () => {
-    expect(c('water_ml', 2000)).toBe('ok')
-    expect(c('water_ml', 1999)).toBe('watch')
-    expect(c('water_ml', 1500)).toBe('watch')
-    expect(c('water_ml', 1499)).toBe('alert')
-    expect(c('water_ml', 1000)).toBe('alert')
-    expect(c('water_ml', 999)).toBe('critical')
+  it('water_ml as % of the NASA fluid target (2500 mL here, D-48)', () => {
+    expect(c('water_ml', 2500)).toBe('ok') // 100 %
+    expect(c('water_ml', 2499)).toBe('watch')
+    expect(c('water_ml', 2000)).toBe('watch') // 80 %
+    expect(c('water_ml', 1999)).toBe('alert')
+    expect(c('water_ml', 1500)).toBe('alert') // 60 %
+    expect(c('water_ml', 1499)).toBe('critical')
+  })
+  it('water target grows with mass (32 mL/kg above the floor)', () => {
+    expect(classify('water_ml', 2800, profile, 90)).toBe('watch') // meta 2880 → 97 %
   })
 
-  it('energy_kcal as % of the crew energy goal (2800)', () => {
-    expect(c('energy_kcal', 2520)).toBe('ok') // 90 %
-    expect(c('energy_kcal', 2519)).toBe('watch')
-    expect(c('energy_kcal', 2240)).toBe('watch') // 80 %
-    expect(c('energy_kcal', 1960)).toBe('alert') // 70 %
-    expect(c('energy_kcal', 1950)).toBe('critical')
+  it('energy_kcal as % of the NASA requirement (EER 2972 kcal, D-50)', () => {
+    expect(c('energy_kcal', 2675)).toBe('ok') // 90,0 %
+    expect(c('energy_kcal', 2674)).toBe('watch')
+    expect(c('energy_kcal', 2378)).toBe('watch') // 80,0 %
+    expect(c('energy_kcal', 2081)).toBe('alert') // 70,0 %
+    expect(c('energy_kcal', 2080)).toBe('critical')
+  })
+  it('EVA hours raise the energy requirement (D-51)', () => {
+    expect(classify('energy_kcal', 2700, { ...profile, evaHoursPerDay: 2 }, 75)).toBe('watch') // meta 3372 → 80 %
   })
 
-  it('protein_g as g/kg of baseline mass (75 kg)', () => {
+  it('protein_g as g/kg of current mass (75 kg here)', () => {
     expect(c('protein_g', 90)).toBe('ok') // 1.2 g/kg
     expect(c('protein_g', 75)).toBe('watch') // 1.0
     expect(c('protein_g', 60)).toBe('alert') // 0.8
     expect(c('protein_g', 59)).toBe('critical')
   })
 
-  it('body_mass_kg as % loss vs baseline (GLIM: >5 % = malnutrition criterion)', () => {
+  it('body_mass_kg as % loss vs baseline (NASA 3.3 % / 5 %, D-49)', () => {
     expect(c('body_mass_kg', 75)).toBe('ok')
     expect(c('body_mass_kg', 80)).toBe('ok') // weight gain is not a loss
+    expect(c('body_mass_kg', 73.6)).toBe('ok') // −1,9 %
     expect(c('body_mass_kg', 73.5)).toBe('watch') // −2 %
-    expect(c('body_mass_kg', 71.25)).toBe('alert') // −5 %
-    expect(c('body_mass_kg', 67.5)).toBe('critical') // −10 %
+    expect(c('body_mass_kg', 72.53)).toBe('watch') // −3,29 %
+    expect(c('body_mass_kg', 72.5)).toBe('alert') // −3,33 %
+    expect(c('body_mass_kg', 71.25)).toBe('critical') // −5 %
   })
 })
 

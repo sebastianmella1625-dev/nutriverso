@@ -33,8 +33,14 @@ export interface Reading {
 export interface CrewProfile {
   crew_id: string
   name: string
-  /** Meta diaria de energía (kcal) para calcular el % de adecuación. */
-  energyGoalKcal: number
-  /** Masa corporal basal (kg) antes de la misión: base para proteína g/kg y % de pérdida. */
+  /** Para la ecuación EER y la meta de líquidos (NASA JSC-67378). */
+  sex: 'm' | 'f'
+  age: number
+  heightM: number
+  /** Actividad física: alta = PA 1,25 (por defecto en la ISS), baja = PA 1,11. */
+  activity: 'high' | 'low'
+  /** Horas de EVA promedio por día (D-51): suman 200 kcal/h a la meta de energía. */
+  evaHoursPerDay: number
+  /** Masa corporal basal (kg) antes de la misión: base del % de pérdida y respaldo si no hay masa reciente. */
   baselineMassKg: number
 }

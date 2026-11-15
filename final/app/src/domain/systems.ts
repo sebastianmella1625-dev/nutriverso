@@ -1,3 +1,4 @@
+import { currentMass, energyAvg3d } from './nasa'
 import { classify } from './thresholds'
 import type { CrewProfile, Indicator, Reading, Status } from './types'
 
@@ -59,15 +60,35 @@ function worstMeasured(statuses: Status[]): Status {
   return measured.sort(compareSeverity)[0]
 }
 
+/** Contexto NASA del tripulante (F2): masa actual y promedio de energía de 3 días (D-50). */
+export interface EvalContext {
+  massKg: number
+  energyAvg: number | null
+}
+
+export function evalContext(readings: Reading[], profile: CrewProfile, now: Date): EvalContext {
+  return { massKg: currentMass(readings, profile, now), energyAvg: energyAvg3d(readings, profile.crew_id, now) }
+}
+
+/** Estado de un indicador con su contexto: la energía usa el promedio de 3 días; el resto, la última lectura vigente. */
+export function indicatorStatus(
+  ind: Indicator,
+  latest: Partial<Record<Indicator, Reading>>,
+  profile: CrewProfile,
+  ctx: EvalContext,
+): Status {
+  if (ind === 'energy_kcal') return ctx.energyAvg === null ? 'nodata' : classify(ind, ctx.energyAvg, profile, ctx.massKg)
+  const rd = latest[ind]
+  return rd ? classify(ind, rd.value, profile, ctx.massKg) : 'nodata'
+}
+
 export function systemStatus(
   sys: SystemId,
   latest: Partial<Record<Indicator, Reading>>,
   profile: CrewProfile,
+  ctx: EvalContext = { massKg: profile.baselineMassKg, energyAvg: latest.energy_kcal?.value ?? null },
 ): SystemState {
-  const statuses = SYSTEMS[sys].indicators.map((ind) => {
-    const rd = latest[ind]
-    return rd ? classify(ind, rd.value, profile) : 'nodata'
-  })
+  const statuses = SYSTEMS[sys].indicators.map((ind) => indicatorStatus(ind, latest, profile, ctx))
   return { status: worstMeasured(statuses), complete: statuses.every((s) => s !== 'nodata') }
 }
 
@@ -77,8 +98,9 @@ export function crewSeverity(
   now: Date,
 ): { worst: Status; bySystem: Record<SystemId, SystemState> } {
   const latest = freshLatest(readings, profile.crew_id, now)
+  const ctx = evalContext(readings, profile, now)
   const bySystem = Object.fromEntries(
-    SYSTEM_IDS.map((s) => [s, systemStatus(s, latest, profile)]),
+    SYSTEM_IDS.map((s) => [s, systemStatus(s, latest, profile, ctx)]),
   ) as Record<SystemId, SystemState>
   return { worst: worstMeasured(SYSTEM_IDS.map((s) => bySystem[s].status)), bySystem }
 }

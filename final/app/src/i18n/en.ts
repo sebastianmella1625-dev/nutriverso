@@ -78,6 +78,8 @@ export const en: Record<string, string> = {
   'crew.detail.trend': '30-day trend',
   'crew.detail.hazard': 'NASA hazard',
   'crew.detail.what_to_do': 'What to do',
+  'crew.detail.target': 'NASA target: {v}',
+  'crew.detail.avg3d': '3-day average: {v}',
   'crew.detail.source': 'Threshold source',
   'crew.detail.notify': 'Notify Ground',
   'crew.detail.notified': 'Sent to Ground',

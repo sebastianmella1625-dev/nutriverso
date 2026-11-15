@@ -1,3 +1,4 @@
+import { energyTarget, fluidTarget } from './nasa'
 import type { CrewProfile, Indicator, Status } from './types'
 
 // Umbrales clínicos del prototipo. Fuente de verdad: sdd/spec-sebas.md (tabla de umbrales).
@@ -25,10 +26,10 @@ export const SOURCES: Record<Indicator, string> = {
   body_temp: 'Standard clinical fever/hypothermia criteria ⚠',
   sleep_hours: 'AASM/SRS consensus: adults ≥7 h',
   mood: 'Team-defined 1–5 self-report scale (not a clinical instrument)',
-  water_ml: 'NASA ISS nutritional requirements ⚠',
-  energy_kcal: 'NASA ISS energy requirement (WHO-based) ⚠',
-  protein_g: 'NASA ISS / ESPEN protein recommendations ⚠',
-  body_mass_kg: 'GLIM 2019 (>5 % weight loss = malnutrition criterion)',
+  water_ml: 'NASA JSC-67378 fluid target: max(32 mL/kg, 2500 mL men / 2100 mL women); % cut-offs set by the team',
+  energy_kcal: 'NASA JSC-67378 (IOM 2005 EER + 200 kcal per EVA hour), 3-day average; % cut-offs set by the team',
+  protein_g: 'NASA JSC-67378 (1.2–1.8 g/kg/day)',
+  body_mass_kg: 'NASA Food and Nutrition Risk Rev D (2025): 3.3 % and 5 % loss',
 }
 
 /** Redondea a 2 decimales para que los bordes exactos (90 %, 1,2 g/kg, −5 %) no caigan por error de coma flotante. */
@@ -42,7 +43,11 @@ function higherIsBetter(v: number, ok: number, watch: number, alert: number): St
   return 'critical'
 }
 
-export function classify(ind: Indicator, value: number, profile: CrewProfile): Status {
+/**
+ * Estado de un indicador. `massKg` = masa actual (por defecto, la basal): la usan las metas de agua, energía y proteína.
+ * Para `energy_kcal` se pasa el promedio de 3 días (D-50).
+ */
+export function classify(ind: Indicator, value: number, profile: CrewProfile, massKg = profile.baselineMassKg): Status {
   const v = value
   switch (ind) {
     case 'bp_systolic':
@@ -74,17 +79,17 @@ export function classify(ind: Indicator, value: number, profile: CrewProfile): S
       return higherIsBetter(v, 7, 6, 5)
     case 'mood':
       return higherIsBetter(v, 4, 3, 2)
-    case 'water_ml':
-      return higherIsBetter(v, 2000, 1500, 1000)
-    case 'energy_kcal':
-      return higherIsBetter(r2((v / profile.energyGoalKcal) * 100), 90, 80, 70)
+    case 'water_ml': // D-48
+      return higherIsBetter(r2((v / fluidTarget(profile, massKg)) * 100), 100, 80, 60)
+    case 'energy_kcal': // D-50
+      return higherIsBetter(r2((v / energyTarget(profile, massKg)) * 100), 90, 80, 70)
     case 'protein_g':
-      return higherIsBetter(r2(v / profile.baselineMassKg), 1.2, 1.0, 0.8)
+      return higherIsBetter(r2(v / massKg), 1.2, 1.0, 0.8)
     case 'body_mass_kg': {
       const lossPct = r2(((profile.baselineMassKg - v) / profile.baselineMassKg) * 100)
-      if (lossPct < 2) return 'ok'
-      if (lossPct < 5) return 'watch'
-      if (lossPct < 10) return 'alert'
+      if (lossPct < 2) return 'ok' // D-49
+      if (lossPct < 3.3) return 'watch'
+      if (lossPct < 5) return 'alert'
       return 'critical'
     }
   }

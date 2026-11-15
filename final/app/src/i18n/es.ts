@@ -78,6 +78,8 @@ export const es: Record<string, string> = {
   'crew.detail.trend': 'Tendencia de 30 días',
   'crew.detail.hazard': 'Peligro según NASA',
   'crew.detail.what_to_do': 'Qué hacer',
+  'crew.detail.target': 'Meta NASA: {v}',
+  'crew.detail.avg3d': 'Promedio de 3 días: {v}',
   'crew.detail.source': 'Fuente del umbral',
   'crew.detail.notify': 'Avisar a Tierra',
   'crew.detail.notified': 'Enviado a Tierra',

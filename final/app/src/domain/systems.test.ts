@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   actionKey,
+  evalContext,
+  indicatorStatus,
   compareSeverity,
   crewSeverity,
   freshLatest,
@@ -10,7 +12,9 @@ import {
 } from './systems'
 import { INDICATORS, type CrewProfile, type Indicator, type Reading } from './types'
 
-const profile: CrewProfile = { crew_id: 'crew-01', name: 'Test', energyGoalKcal: 2800, baselineMassKg: 75 }
+const profile: CrewProfile = {
+  crew_id: 'crew-01', name: 'Test', sex: 'm', age: 40, heightM: 1.78, activity: 'high', evaHoursPerDay: 0, baselineMassKg: 75,
+}
 const NOW = new Date('2026-11-14T12:00:00Z')
 const hoursAgo = (h: number) => new Date(NOW.getTime() - h * 3600_000).toISOString()
 
@@ -93,5 +97,25 @@ describe('crewSeverity and ranking', () => {
 describe('actionKey', () => {
   it('builds the i18n key', () => {
     expect(actionKey('bone', 'critical')).toBe('action.bone.critical')
+  })
+})
+
+describe('NASA context (D-50, F2)', () => {
+  it('energy uses the 3-day average, not only today', () => {
+    // hoy 1500 (50 %), ayer y anteayer 3200: promedio 2633 → 88,6 % de 2972 → watch
+    const rs = [r('energy_kcal', 1500, 1), r('energy_kcal', 3200, 25), r('energy_kcal', 3200, 49)]
+    const ctx = evalContext(rs, profile, NOW)
+    expect(ctx.energyAvg).toBe(2633)
+    expect(indicatorStatus('energy_kcal', freshLatest(rs, 'crew-01', NOW), profile, ctx)).toBe('watch')
+  })
+  it('protein uses the current mass, not the baseline', () => {
+    const rs = [r('body_mass_kg', 70, 2), r('protein_g', 85, 1)] // 85/70 = 1,21 g/kg → ok (con la basal de 75 kg sería 1,13 → watch)
+    const ctx = evalContext(rs, profile, NOW)
+    expect(ctx.massKg).toBe(70)
+    expect(indicatorStatus('protein_g', freshLatest(rs, 'crew-01', NOW), profile, ctx)).toBe('ok')
+  })
+  it('energy without readings in 3 days is nodata', () => {
+    const ctx = evalContext([], profile, NOW)
+    expect(indicatorStatus('energy_kcal', {}, profile, ctx)).toBe('nodata')
   })
 })

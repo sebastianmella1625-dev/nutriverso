@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { DEFAULT_ACCELERATED, DEFAULT_SCENARIO, delaySeconds } from '../../domain/delay'
-import { actionKey, SYSTEMS, type SystemId, type SystemState } from '../../domain/systems'
-import { classify, SOURCES, UNITS } from '../../domain/thresholds'
+import { energyTarget, fluidTarget } from '../../domain/nasa'
+import { actionKey, indicatorStatus, SYSTEMS, type EvalContext, type SystemId, type SystemState } from '../../domain/systems'
+import { SOURCES, UNITS } from '../../domain/thresholds'
 import type { CrewProfile, Indicator, Reading } from '../../domain/types'
 import type { Store } from '../../data'
 import { useT } from '../../i18n'
@@ -14,13 +15,22 @@ interface Props {
   profile: CrewProfile
   readings: Reading[]
   latest: Partial<Record<Indicator, Reading>>
+  ctx: EvalContext
   store: Store
   now: Date
 }
 
 const DAY_MS = 24 * 3600_000
 
-export function SystemDetail({ system, state, profile, readings, latest, store, now }: Props) {
+/** Meta NASA visible por indicador nutricional (F2), con la masa actual. */
+function targetText(ind: Indicator, profile: CrewProfile, ctx: EvalContext): string | null {
+  if (ind === 'water_ml') return `≥ ${fluidTarget(profile, ctx.massKg)} mL`
+  if (ind === 'energy_kcal') return `${Math.round(energyTarget(profile, ctx.massKg))} kcal`
+  if (ind === 'protein_g') return `≥ ${Math.round(1.2 * ctx.massKg)} g (1.2 g/kg)`
+  return null
+}
+
+export function SystemDetail({ system, state, profile, readings, latest, ctx, store, now }: Props) {
   const { t } = useT()
   const [sent, setSent] = useState(false)
   const def = SYSTEMS[system]
@@ -68,8 +78,14 @@ export function SystemDetail({ system, state, profile, readings, latest, store, 
               <span className="indicator__value">
                 {last ? `${last.value} ${UNITS[ind]}` : '—'}
               </span>
-              <StatusBadge status={last ? classify(ind, last.value, profile) : 'nodata'} />
+              <StatusBadge status={indicatorStatus(ind, latest, profile, ctx)} />
             </div>
+            {(ind === 'energy_kcal' && ctx.energyAvg !== null) || targetText(ind, profile, ctx) ? (
+              <p className="indicator__target">
+                {ind === 'energy_kcal' && ctx.energyAvg !== null && <>{t('crew.detail.avg3d', { v: `${ctx.energyAvg} kcal` })} · </>}
+                {targetText(ind, profile, ctx) && t('crew.detail.target', { v: targetText(ind, profile, ctx) as string })}
+              </p>
+            ) : null}
             {series.length > 1 && (
               <div className="chart" aria-label={`${t(`indicator.${ind}`)} · ${t('crew.detail.trend')}`} role="img">
                 <ResponsiveContainer width="100%" height={90}>
