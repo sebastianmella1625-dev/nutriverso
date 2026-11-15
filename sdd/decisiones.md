@@ -49,6 +49,7 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-44 | 2026-11-14 | Publicar en GitHub Pages (repo público) temprano el domingo y actualizar con cada avance | Sebastián | asegurar el link exigido por las bases
 - D-45 | 2026-11-14 | Juzgamiento local: pitch de máximo 3 min + demo en vivo en tiempo real; el software debe funcionar al 100 % | Sebastián | formato de la sede
 - D-46 | 2026-11-14 | Demo en vivo: astronauta en el celular + Tierra en el computador vía Supabase; respaldo: un computador con dos ventanas en modo local (sin internet) | Sebastián | se ve real y no depende solo de la WiFi
+- D-47 | 2026-11-15 | Repo público `nutriverso` en GitHub (sebastianmella1625-dev) con Pages vía Actions; se publican final/, el prototipo de Sebas, sdd/ y debate/; el material de Miguel y Camila queda fuera (gitignore y fuera del historial) | Sebastián | sin su OK no se publica su trabajo
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)

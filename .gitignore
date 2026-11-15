@@ -6,3 +6,11 @@ dist/
 .DS_Store
 Thumbs.db
 !.env.example
+
+# Material de Miguel y Camila: no se publica sin su OK (D-47)
+prototipos/miguel/*
+!prototipos/miguel/.gitkeep
+prototipos/camila/*
+!prototipos/camila/.gitkeep
+debate/paquete-r1/ENTREGA-miguel.md
+debate/paquete-r1/ENTREGA-camila.md
