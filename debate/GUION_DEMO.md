@@ -8,6 +8,7 @@
 ## Checklist 30 min antes
 - [ ] En Supabase → SQL Editor: corre `final/supabase/seed-demo.sql` para dejar la sala limpia. Antes, regénéralo con `npm run seed -- demo` dentro de `final/app`, así las fechas quedan al día.
 - [ ] Celular: abre el link de Crew en Chrome (Android) o Safari (iOS) y agrégalo a la pantalla de inicio, para que se vea como app. Brillo al máximo y sin ahorro de batería.
+- [ ] **Recarga 2 veces** el celular y el computador (o cierra y vuelve a abrir la app instalada). La PWA guarda la versión anterior y aplica la nueva en la segunda carga. Comprueba que se vea la tarjeta "Space weather · NASA DONKI" y el texto **"Live room: demo"** arriba.
 - [ ] Computador: abre el link de Ground y sube el zoom del navegador para el proyector.
 - [ ] Idioma en **English**: el jurado evalúa en inglés.
 - [ ] Ensayo completo una vez con el cronómetro. En Ground, la "Accelerated demo" debe estar activa (12 min = 12 s).
