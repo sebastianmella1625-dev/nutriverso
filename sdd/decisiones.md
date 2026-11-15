@@ -44,6 +44,11 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-39 | 2026-11-14 | Candidatos a trasplante: rigor clínico de Miguel, clima espacial NASA DONKI, músculo y fases, laboratorio + informe (≈19 h en total; el debate prioriza qué entra según el tiempo) | Sebastián | todos suman a la rúbrica
 - D-40 | 2026-11-14 | Regla de umbrales: si existe un requisito NASA (nutrición, líquidos, peso), manda ese; en signos vitales mandan las guías clínicas (AHA, ADA). Lo valida el equipo de Nutrición | Sebastián | lo más defendible ante el jurado
 - D-41 | 2026-11-14 | Sin debate entre IAs: con los 3 prototipos en el repo, el equipo decide la versión final según las bases del hackathon (rúbrica, requisitos de entrega, plazo). `debate/r1-sebas.md` y `debate/paquete-r1/MATRIZ.md` quedan como insumo | Sebastián | ahorrar tiempo; el material ya está aquí
+- D-42 | 2026-11-14 | Base del final: prototipo de Sebas + piezas de Miguel y Camila como módulos con tests; se toma de Miguel el estilo visual | Sebastián | único con tiempo real, PWA y EN/ES verificados
+- D-43 | 2026-11-14 | Entran seguro: (a) rigor clínico de Miguel (3 niveles de acción, nivel de evidencia, metas NASA JSC-67378), (b) informe para el médico por el canal real con retardo, (c) clima espacial NASA DONKI. Si sobra tiempo: prensión + regla MyoShield. Fuera: laboratorio | Sebastián | mayor puntaje por hora
+- D-44 | 2026-11-14 | Publicar en GitHub Pages (repo público) temprano el domingo y actualizar con cada avance | Sebastián | asegurar el link exigido por las bases
+- D-45 | 2026-11-14 | Juzgamiento local: pitch de máximo 3 min + demo en vivo en tiempo real; el software debe funcionar al 100 % | Sebastián | formato de la sede
+- D-46 | 2026-11-14 | Demo en vivo: astronauta en el celular + Tierra en el computador vía Supabase; respaldo: un computador con dos ventanas en modo local (sin internet) | Sebastián | se ve real y no depende solo de la WiFi
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)
@@ -51,6 +56,8 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - P-03 | Nombre del proyecto en inglés
 - P-04 | Hora del juzgamiento local (preguntar a la Local Lead)
 - P-05 | Sistema de diseño: tokens propios con criterios WCAG o USWDS (`01_RECURSOS.md` §5). Propuesta del UI Designer: tokens propios con estética de "mission control" oscura, tomando de USWDS solo los criterios de accesibilidad, sin el banner .gov ni marcas
+- P-07 | La entrega global igual exige un video de 30 s o 7 slides en la página Project (aparte del pitch local): definir cuál
+- P-08 | Confirmar con Miguel y Camila que aceptan aparecer como tripulantes simulados en la demo
 - P-06 | Horario por fases (propuesta en `harness.md`, por confirmar)
 
 ## Umbrales clínicos
