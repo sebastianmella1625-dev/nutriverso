@@ -33,8 +33,8 @@ Hackaton/
 | Fase 1: prototipo Sebas | ✅ 9/9 tareas, 106 tests, revisado. Ficha: `prototipos/sebas/ENTREGA.md`. Sin publicar (solo WiFi local). Ledger: `.superpowers/sdd/plan-sebas/progress.md` |
 | Fase 1: prototipos Miguel y Camila | 🔄 casi terminados, hechos sin el brief. Sebas les pide el contexto y el código por chat para traerlos aquí |
 | Fase 2: debate R1, R2 y conclusión | ⬜ |
-| Fase 3: prototipo final y deploy en GitHub Pages | ⬜ |
-| Fase 4: demo y página Project en inglés | ⬜ |
+| Fase 3: prototipo final y deploy en GitHub Pages | ✅ F1–F6 publicadas (metas NASA, niveles de acción, informe, DONKI, sala Supabase en vivo); 161 tests; https://sebastianmella1625-dev.github.io/nutriverso/ · ledger `.superpowers/sdd/plan-final/progress.md` |
+| Fase 4: demo y página Project en inglés | 🔄 guion de demo en vivo listo (`debate/GUION_DEMO.md`); falta video 30 s o 7 slides (P-07) y la página Project |
 
 ## Pasos que solo puede hacer Sebas
 1. ~~Configurar git~~ ✅ hecho el 14-11 (nombre + correo noreply global). Primeros commits: bd3d737, 23bae14.
