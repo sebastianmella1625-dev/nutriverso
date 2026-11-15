@@ -1,16 +1,52 @@
-import { isDelivered } from '../../domain/delay'
-import type { Message } from '../../data'
+import { useState } from 'react'
+import { DEFAULT_ACCELERATED, DEFAULT_SCENARIO, delaySeconds, isDelivered } from '../../domain/delay'
+import { buildReport } from '../../domain/report'
+import type { CrewProfile, Reading } from '../../domain/types'
+import type { Message, Store } from '../../data'
 import { useT } from '../../i18n'
 
-/** Mensajes de Tierra para un tripulante. Si aún viajan, solo se ve la cuenta regresiva (Review Focus #4). */
-export function Inbox({ crewId, messages, now }: { crewId: string; messages: Message[]; now: Date }) {
+interface Props {
+  profile: CrewProfile
+  readings: Reading[]
+  messages: Message[]
+  store: Store
+  now: Date
+}
+
+/** Mensajes de Tierra para un tripulante (Review Focus #4) + envío del informe semanal (F4, D-53). */
+export function Inbox({ profile, readings, messages, store, now }: Props) {
   const { t, lang } = useT()
+  const [sentInfo, setSentInfo] = useState<string | null>(null)
+  const crewId = profile.crew_id
   const mine = messages
     .filter((m) => m.crew_id === crewId && m.from_role === 'ground')
     .sort((a, b) => b.created_at.localeCompare(a.created_at))
 
+  const sendReport = async () => {
+    const delay = delaySeconds(DEFAULT_SCENARIO, { accelerated: DEFAULT_ACCELERATED })
+    await store.sendMessage({
+      crew_id: crewId,
+      from_role: 'crew',
+      body: buildReport(readings, profile, new Date()),
+      deliver_at: new Date(Date.now() + delay * 1000).toISOString(),
+    })
+    setSentInfo(t('crew.report.sent', { s: Math.round(delay) }))
+  }
+
   return (
     <section className="inbox" aria-labelledby="inbox-title">
+      <div className="report-box">
+        <button type="button" className="btn btn--primary" onClick={() => void sendReport()}>
+          🗒 {t('crew.report.send')}
+        </button>
+        <p className="muted report-box__hint">{t('crew.report.hint')}</p>
+        {sentInfo && (
+          <p role="status" className="report-box__sent">
+            ✓ {sentInfo}
+          </p>
+        )}
+      </div>
+
       <h2 id="inbox-title">{t('crew.inbox.title')}</h2>
       {mine.length === 0 && <p className="muted">{t('crew.inbox.empty')}</p>}
       <ul className="msglist" aria-live="polite">

@@ -193,3 +193,10 @@ html, body { overflow-x: clip; }
 .legend__level--now { color: var(--critical); }
 .legend__level--report { color: var(--watch); }
 .legend__level--self { color: var(--accent); }
+
+/* Informe semanal (F4) */
+.report-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3); margin: var(--space-2) 0 var(--space-4); }
+.report-box__hint { font-size: 0.82rem; margin: var(--space-2) 0 0; }
+.report-box__sent { color: var(--ok); margin: var(--space-2) 0 0; }
+.bubble, .msg__body { white-space: pre-wrap; overflow-wrap: anywhere; }
+.bubble--crew { font-family: var(--mono); font-size: 0.78rem; }

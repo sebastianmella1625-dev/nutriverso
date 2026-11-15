@@ -71,7 +71,7 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
           </>
         )}
         {tab === 'checkin' && <CheckIn key={profile.crew_id} profile={profile} readings={readings} store={store} now={now} />}
-        {tab === 'messages' && <Inbox crewId={profile.crew_id} messages={messages} now={now} />}
+        {tab === 'messages' && <Inbox profile={profile} readings={readings} messages={messages} store={store} now={now} />}
       </div>
 
       <nav className="tabbar" aria-label="Crew">
