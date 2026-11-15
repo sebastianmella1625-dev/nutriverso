@@ -1,0 +1,8 @@
+{
+  "name": "nutriverso-capture",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright-core": "^1.65.1"
+  }
+}
