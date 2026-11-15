@@ -14,3 +14,6 @@ prototipos/camila/*
 !prototipos/camila/.gitkeep
 debate/paquete-r1/ENTREGA-miguel.md
 debate/paquete-r1/ENTREGA-camila.md
+
+# Grabación cruda del video demo (solo se versiona el mp4 final)
+entrega/video/*.webm
