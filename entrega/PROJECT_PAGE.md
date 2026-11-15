@@ -1,6 +1,6 @@
 # Project page: texto listo para copiar (NASA Space Apps 2026)
 
-> Cada bloque corresponde a un campo del formulario "Project" del equipo en spaceappschallenge.org. Todo va en inglés, como exigen las bases. Los `[[…]]` se completan cuando existan los links de la demo.
+> Cada bloque corresponde a un campo del formulario "Project" del equipo en spaceappschallenge.org. Todo va en inglés, como exigen las bases. La demo es el video de YouTube (no listado); las slides de Canva quedan para el pitch (D-59).
 
 ---
 
@@ -11,8 +11,7 @@ NutriVerso Crew Health
 NutriVerso Crew Health is an installable web app (PWA, English/Spanish) that helps astronauts on long missions assess their own health and know what to do about it. A body map shows five systems (mind, heart, bone, muscle, immune and metabolic) with a clear status. We put nutrition inside those status lights: hydration and energy intake drive *Bone* and protein and body mass drive *Muscle*, each compared with NASA's personalized targets (JSC-67378). Every status comes with an action level: "Notify flight surgeon now", "Goes in the weekly report" or "Self-care now". A Ground console lets the flight surgeon follow the crew live, and every message travels with the real Earth–Mars delay. We built it because at Mars distance, help is 3 to 22 minutes away and astronauts must be able to judge their own health.
 
 ## Link to Project Demo
-[[link público a las 7 slides de Canva]]
-(Video de 30 s, si se elige: [[link de YouTube o Drive]])
+https://youtu.be/VbDiauiQMYg (30 s motion-graphics demo with voice-over and subtitles, built from real app screenshots)
 
 ## Link to Final Project
 - Live app: https://sebastianmella1625-dev.github.io/nutriverso/ (astronaut view: `#/crew`, flight surgeon view: `#/ground`)
@@ -42,7 +41,7 @@ NASA lists inadequate nutrition among the risks of long-duration missions, and c
 TypeScript, React 19, Vite, vite-plugin-pwa, Recharts, Vitest, Supabase (Postgres + Realtime), GitHub Pages and GitHub Actions, NASA DONKI API.
 
 ## Use of Super Intelligence (AI)
-Yes. We used **Claude (Anthropic) through Claude Code** to write the source code, the unit tests and the first drafts of the health-action texts, which our nutrition team then reviewed and approved. The team (Nutrition & Dietetics students) set the requirements and made every design and clinical decision; 57 decisions are logged in `sdd/decisiones.md` in the repository. Our teammates' prototypes, built with Claude and ChatGPT, were reviewed and their best ideas were rebuilt in this codebase with tests. The repository README declares the AI use. We used no AI-generated images: the app icons are drawn by code and every screenshot comes from the real app.
+Yes. We used **Claude (Anthropic) through Claude Code** to write the source code, the unit tests and the first drafts of the health-action texts, which our nutrition team then reviewed and approved. The team (Nutrition & Dietetics students) set the requirements and made every design and clinical decision; 60 decisions are logged in `sdd/decisiones.md` in the repository. Our teammates' prototypes, built with Claude and ChatGPT, were reviewed and their best ideas were rebuilt in this codebase with tests. The repository README declares the AI use. We used no AI-generated images: the app icons are drawn by code and every screenshot comes from the real app.
 
 ## NASA Data
 - **NASA Human Research Program**: 5 Hazards of Human Spaceflight and Human System Risks. Each body system links to its hazard (isolation, altered gravity, hostile closed environment and radiation).
