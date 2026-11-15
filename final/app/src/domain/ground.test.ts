@@ -65,6 +65,12 @@ describe('pendingAlerts (D-35)', () => {
   it('hides alerts once Ground opened that crew member afterwards', () => {
     expect(pendingAlerts([msg('crew-01', 'crew', 10_000, 5_000)], [], CREW, { 'crew-01': iso(1_000) }, NOW)).toEqual([])
   })
+  it('compares times as instants: Supabase "+00:00" timestamps vs JS "Z" (F6)', () => {
+    const supa = { id: 's', crew_id: 'crew-01', from_role: 'crew' as const, body: 'x', created_at: '2026-11-14T11:59:40+00:00', deliver_at: '2026-11-14T11:59:50+00:00' }
+    expect(pendingAlerts([supa], [], CREW, { 'crew-01': '2026-11-14T11:59:55.000Z' }, NOW)).toEqual([])
+    expect(pendingAlerts([supa], [], CREW, { 'crew-01': '2026-11-14T11:59:45.000Z' }, NOW)).toHaveLength(1)
+  })
+
   it('raises a critical alert from readings, until seen after the latest reading', () => {
     expect(pendingAlerts([], [crit], CREW, {}, NOW)).toEqual([
       { crew_id: 'crew-02', kind: 'critical', name: 'Camila', system: 'heart' },

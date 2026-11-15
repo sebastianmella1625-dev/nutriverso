@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { usePersisted } from '../persisted'
 import { pendingAlerts, rankCrew } from '../../domain/ground'
 import { CREW } from '../../domain/mission'
 import type { Reading } from '../../domain/types'
@@ -20,7 +21,7 @@ export function GroundView({ readings, messages, store, now }: Props) {
   const { t } = useT()
   const ranks = rankCrew(readings, CREW, now)
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [seen, setSeen] = useState<Record<string, string>>({})
+  const [seen, setSeen] = usePersisted<Record<string, string>>('nv.groundSeen', {}) // F6: no reaparecen tras recargar
 
   const open = (crewId: string) => {
     setSelectedId(crewId)

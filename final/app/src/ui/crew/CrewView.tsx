@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { unreadCount } from '../../domain/unread'
+import { usePersisted } from '../persisted'
 import { badges, streak } from '../../domain/engagement'
 import { systemActionLevel, type ActionLevel } from '../../domain/actions'
 import { crewSeverity, evalContext, freshLatest, SYSTEM_IDS, type SystemId } from '../../domain/systems'
@@ -34,7 +36,15 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
   ) as Record<SystemId, ActionLevel | null>
   const days = streak(readings, profile.crew_id, now)
   const earned = badges(readings, profile, now)
-  const unread = messages.filter((m) => m.crew_id === profile.crew_id && m.from_role === 'ground').length
+  const [inboxSeen, setInboxSeen] = usePersisted<Record<string, string>>('nv.inboxSeen', {})
+  const unread = tab === 'messages' ? 0 : unreadCount(messages, profile.crew_id, inboxSeen[profile.crew_id] ?? null, now)
+  // F6: abrir Mensajes marca como leído (también al salir, para lo que llegó mientras estaba abierto)
+  useEffect(() => {
+    if (tab === 'messages') setInboxSeen((s) => ({ ...s, [profile.crew_id]: new Date().toISOString() }))
+    return () => {
+      if (tab === 'messages') setInboxSeen((s) => ({ ...s, [profile.crew_id]: new Date().toISOString() }))
+    }
+  }, [tab, profile.crew_id, setInboxSeen])
 
   return (
     <div className="crew">
