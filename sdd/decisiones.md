@@ -54,6 +54,7 @@ Formato: `D-NN | fecha | decisión | quién | por qué`.
 - D-49 | 2026-11-15 | Pérdida de masa vs basal: <2 % ok, 2–3,2 % vigilar, 3,3–4,9 % alerta, ≥5 % crítico (NASA Food & Nutrition Risk Rev D) | Sebastián | NASA primero (D-40) + aviso temprano
 - D-50 | 2026-11-15 | Energía: promedio de 3 días ÷ (EER IOM/NASA JSC-67378 + 200 kcal × h de EVA): ≥90 % ok, 80–89 vigilar, 70–79 alerta, <70 crítico | Sebastián | un día malo no dispara la alarma
 - D-51 | 2026-11-15 | Horas de EVA promedio por día en el perfil del tripulante (no cambia el contrato de datos) | Sebastián | sin tocar Supabase
+- D-52 | 2026-11-15 | Niveles de acción "híbrido seguro": avisa al médico ya = crítico de signos vitales, glucosa o ánimo 1; resumen semanal = alerta o crítico de masa, proteína, energía o sueño (y alerta de ánimo); autocuidado = el resto (agua crítica: "si no mejora en 24 h, avisa") | Sebastián | autonomía en Marte sin saturar a Tierra
 
 ## Pendientes
 - P-01 | Concepto ganador: sale del debate (fase 2)

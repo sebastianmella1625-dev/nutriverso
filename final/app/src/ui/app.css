@@ -182,3 +182,14 @@ html, body { overflow-x: clip; }
 .composer__opts input[type='range'] { display: block; width: 160px; }
 .composer__send { display: flex; align-items: center; gap: var(--space-3); }
 .indicator__target { font-size: 0.8rem; color: var(--text); margin: var(--space-1) 0 0; font-family: var(--mono); }
+
+/* Niveles de acción (D-52) */
+.level { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; margin-bottom: var(--space-2); border: 1px solid currentColor; }
+.level--now { color: var(--critical); background: color-mix(in srgb, var(--critical) 14%, transparent); }
+.level--report { color: var(--watch); background: color-mix(in srgb, var(--watch) 12%, transparent); }
+.level--self { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.legend__name { display: flex; flex-direction: column; }
+.legend__level { font-size: 0.72rem; font-weight: 600; }
+.legend__level--now { color: var(--critical); }
+.legend__level--report { color: var(--watch); }
+.legend__level--self { color: var(--accent); }

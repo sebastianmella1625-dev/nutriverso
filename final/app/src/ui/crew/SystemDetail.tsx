@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { DEFAULT_ACCELERATED, DEFAULT_SCENARIO, delaySeconds } from '../../domain/delay'
+import { EVIDENCE, type ActionLevel } from '../../domain/actions'
 import { energyTarget, fluidTarget } from '../../domain/nasa'
 import { actionKey, indicatorStatus, SYSTEMS, type EvalContext, type SystemId, type SystemState } from '../../domain/systems'
 import { SOURCES, UNITS } from '../../domain/thresholds'
 import type { CrewProfile, Indicator, Reading } from '../../domain/types'
 import type { Store } from '../../data'
 import { useT } from '../../i18n'
+import { LevelChip } from '../LevelChip'
 import { StatusBadge } from '../StatusBadge'
 
 interface Props {
   system: SystemId
   state: SystemState
+  level: ActionLevel | null
   profile: CrewProfile
   readings: Reading[]
   latest: Partial<Record<Indicator, Reading>>
@@ -30,7 +33,7 @@ function targetText(ind: Indicator, profile: CrewProfile, ctx: EvalContext): str
   return null
 }
 
-export function SystemDetail({ system, state, profile, readings, latest, ctx, store, now }: Props) {
+export function SystemDetail({ system, state, level, profile, readings, latest, ctx, store, now }: Props) {
   const { t } = useT()
   const [sent, setSent] = useState(false)
   const def = SYSTEMS[system]
@@ -56,6 +59,7 @@ export function SystemDetail({ system, state, profile, readings, latest, ctx, st
 
       <div className="detail__block detail__action">
         <h3>{t('crew.detail.what_to_do')}</h3>
+        {level && <LevelChip level={level} />}
         <p>{t(actionKey(system, state.status))}</p>
         {canNotify && (
           <button type="button" className="btn btn--primary" onClick={notify} disabled={sent}>
@@ -99,7 +103,7 @@ export function SystemDetail({ system, state, profile, readings, latest, ctx, st
               </div>
             )}
             <p className="indicator__source">
-              {t('crew.detail.source')}: {SOURCES[ind]}
+              {t('crew.detail.source')}: {SOURCES[ind]} · <strong>{t(`evidence.${EVIDENCE[ind]}`)}</strong>
             </p>
           </div>
         )

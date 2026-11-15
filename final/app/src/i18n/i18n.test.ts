@@ -17,10 +17,21 @@ describe('dictionaries', () => {
   it('has an action for every system × status (25)', () => {
     for (const s of SYSTEM_IDS) for (const st of STATUSES) expect(en[actionKey(s, st)], `${s}.${st}`).toBeTruthy()
   })
-  it('every critical action tells the astronaut to notify Ground', () => {
-    for (const s of SYSTEM_IDS) {
-      expect(en[actionKey(s, 'critical')]).toMatch(/[Nn]otify Ground/)
-      expect(es[actionKey(s, 'critical')]).toMatch(/[Aa]visa a Tierra/)
+  it('critical actions follow the action-level table (D-52)', () => {
+    for (const s of ['mind', 'heart', 'immune'] as const) {
+      expect(en[actionKey(s, 'critical')], s).toMatch(/[Nn]otify Ground/)
+      expect(es[actionKey(s, 'critical')], s).toMatch(/[Aa]visa a Tierra/)
+    }
+    // agua/energía: autocuidado, con escalamiento a las 24 h
+    expect(en['action.bone.critical']).toMatch(/24 h.*notify Ground/)
+    expect(es['action.bone.critical']).toMatch(/24 h.*avisa a Tierra/)
+    // masa/proteína: va en el informe a Tierra
+    expect(en['action.muscle.critical']).toMatch(/report/)
+    expect(es['action.muscle.critical']).toMatch(/informe/)
+  })
+  it('has labels for the 3 action levels and 4 evidence levels', () => {
+    for (const k of ['level.now', 'level.report', 'level.self', 'evidence.strong', 'evidence.moderate', 'evidence.weak', 'evidence.team']) {
+      expect(en[k], k).toBeTruthy()
     }
   })
   it('covers every key the domain emits', () => {

@@ -1,4 +1,5 @@
 import type { KeyboardEvent } from 'react'
+import type { ActionLevel } from '../../domain/actions'
 import type { SystemId, SystemState } from '../../domain/systems'
 import { useT } from '../../i18n'
 import { STATUS_ICON } from '../StatusBadge'
@@ -7,6 +8,7 @@ import { STATUS_ICON } from '../StatusBadge'
 
 interface Props {
   bySystem: Record<SystemId, SystemState>
+  levels?: Record<SystemId, ActionLevel | null>
   selected: SystemId | null
   onSelect: (s: SystemId) => void
 }
@@ -41,7 +43,7 @@ const HIT: Record<SystemId, { x: number; y: number; width: number; height: numbe
   bone: { x: 62, y: 222, width: 76, height: 98 },
 }
 
-export function BodyMap({ bySystem, selected, onSelect }: Props) {
+export function BodyMap({ bySystem, levels, selected, onSelect }: Props) {
   const { t } = useT()
   const order: SystemId[] = ['mind', 'heart', 'immune', 'muscle', 'bone']
 
@@ -96,7 +98,10 @@ export function BodyMap({ bySystem, selected, onSelect }: Props) {
                 <span className="legend__icon" aria-hidden="true">
                   {STATUS_ICON[status]}
                 </span>
-                <span className="legend__name">{t(`system.${s}`)}</span>
+                <span className="legend__name">
+                  {t(`system.${s}`)}
+                  {levels?.[s] && <span className={`legend__level legend__level--${levels[s]}`}>{t(`level.${levels[s]}`)}</span>}
+                </span>
                 <span className="legend__status">
                   {t(`status.${status}`)}
                   {!complete && status !== 'nodata' ? ` · ${t('status.incomplete')}` : ''}

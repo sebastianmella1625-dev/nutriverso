@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { badges, streak } from '../../domain/engagement'
-import { crewSeverity, evalContext, freshLatest, type SystemId } from '../../domain/systems'
+import { systemActionLevel, type ActionLevel } from '../../domain/actions'
+import { crewSeverity, evalContext, freshLatest, SYSTEM_IDS, type SystemId } from '../../domain/systems'
 import type { CrewProfile, Reading } from '../../domain/types'
 import type { Message, Store } from '../../data'
 import { useT } from '../../i18n'
@@ -27,6 +28,9 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
   const sev = crewSeverity(readings, profile, now)
   const latest = freshLatest(readings, profile.crew_id, now)
   const ctx = evalContext(readings, profile, now)
+  const levels = Object.fromEntries(
+    SYSTEM_IDS.map((s) => [s, systemActionLevel(s, latest, profile, ctx)]),
+  ) as Record<SystemId, ActionLevel | null>
   const days = streak(readings, profile.crew_id, now)
   const earned = badges(readings, profile, now)
   const unread = messages.filter((m) => m.crew_id === profile.crew_id && m.from_role === 'ground').length
@@ -47,12 +51,13 @@ export function CrewView({ profile, readings, messages, store, now }: Props) {
                 ))}
               </ul>
             </div>
-            <BodyMap bySystem={sev.bySystem} selected={selected} onSelect={setSelected} />
+            <BodyMap bySystem={sev.bySystem} levels={levels} selected={selected} onSelect={setSelected} />
             {selected ? (
               <SystemDetail
                 key={`${profile.crew_id}-${selected}`}
                 system={selected}
                 state={sev.bySystem[selected]}
+                level={levels[selected]}
                 profile={profile}
                 readings={readings}
                 latest={latest}
